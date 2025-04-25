@@ -41,12 +41,19 @@ Consistent indentation and code formatting
 
 
 Project Structure
+
 ├── index.html              # Main HTML document
+
 ├── css/
+
 │   └── styles.css          # Main stylesheet
+
 ├── images/                 # Image assets
+
 ├── README.md               # Project documentation
+
 └── ABOUT.md                # Brief project overview
+
 Future Development Roadmap
 This version represents a minimum viable product with several planned improvements:
 
@@ -71,6 +78,7 @@ Additional CSS animations and transitions for improved UX
 
 
 Credits
+
 Designed and developed by Bruno Berruyer as part of web development coursework.
 License
 This project is for educational purposes only. All rights reserved.
