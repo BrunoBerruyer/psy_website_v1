@@ -1,0 +1,934 @@
+/* 
+* Fichier CSS principal 
+* Site vitrine Cabinet de Psychologie - Design néomorphique
+* Auteur: Bruno Berruyer
+* Description: Ce fichier importe tous les modules CSS et définit les styles globaux
+*/
+
+/* ======= IMPORTATIONS DES MODULES CSS ======= */
+/* Organisation modulaire pour une meilleure maintenabilité */
+@import 'styles/all_variables.css';
+@import 'styles/fonts.css';
+@import 'styles/colors.css';
+@import 'styles/animations.css';
+@import 'styles/layout.css';
+@import 'styles/boutons.css';
+@import 'styles/micro_interactions.css';
+
+/* ======= RESET ET STYLES DE BASE ======= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Inclut padding et bordures dans la largeur/hauteur totale */
+}
+
+html {
+    scroll-behavior: smooth; /* Animation de défilement fluide native CSS */
+    /* Taille de base responsive qui s'adaptera selon la taille d'écran */
+    font-size: clamp(14px, 1vw, 18px); /* Min: 14px, Preferred: 1vw, Max: 18px */
+    height: 100%; /* Assure que html prend toute la hauteur */
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden; /* Évite le défilement horizontal */
+    height: 100%; /* Assure que body prend toute la hauteur */
+    scroll-snap-type: y mandatory; /* Active le scroll-snap pour une navigation fluide */
+}
+
+/* Styles de typographie de base */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-heading);
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: var(--transition-standard);
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+}
+
+/* ======= LAYOUT CONTAINERS ======= */
+.container {
+    /* Largeur de conteneur responsive avec clamp pour éviter les media queries */
+    width: clamp(300px, var(--container-width), var(--container-max-width));
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.section {
+    /* Garantit que chaque section occupe exactement 100% de la hauteur de la fenêtre */
+    height: 100vh; 
+    min-height: 100vh; /* Fallback pour les anciens navigateurs */
+    max-height: 100vh; /* Empêche le dépassement sur certains navigateurs */
+    overflow: auto; /* Permet le défilement au besoin tout en préservant la hauteur */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-xxl) 0;
+    position: relative;
+    scroll-snap-align: start; /* Améliore l'ancrage lors du défilement */
+}
+
+.section-title {
+    /* Taille de titre responsive sans media queries */
+    font-size: clamp(var(--font-size-xl), 5vw, var(--font-size-xxl));
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--color-accent);  /* Utilise la variable --color-accent qui est maintenant saumon */
+    margin: var(--spacing-sm) auto 0;
+    border-radius: var(--border-radius-full);
+}
+
+.section-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl);
+    /* Taille de texte responsive */
+    font-size: clamp(var(--font-size-base), 2vw, var(--font-size-lg));
+    color: var(--color-text-light);
+}
+
+/* ======= NAVIGATION ======= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Padding responsif qui diminue sur les petits écrans */
+    padding: clamp(var(--spacing-xs), 1.5vw, var(--spacing-md)) clamp(var(--spacing-md), 3vw, var(--spacing-lg));
+    background-color: var(--color-background-translucent);
+    backdrop-filter: blur(10px); /* Effet de flou pour la transparence */
+    z-index: 1000; /* Garantit que la navbar reste au-dessus des autres éléments */
+    box-shadow: var(--shadow-subtle);
+    transition: var(--transition-standard);
+}
+
+.navbar.scrolled {
+    padding: var(--spacing-xs) var(--spacing-lg);
+    box-shadow: var(--shadow-medium);
+}
+
+.nav-logo h3 {
+    margin-bottom: 0;
+    /* Taille responsives sans media queries */
+    font-size: clamp(var(--font-size-base), 1.5vw, var(--font-size-md));
+    white-space: nowrap;
+}
+
+.logo-link {
+    color: inherit; /* Hérite la couleur du texte parent */
+    text-decoration: none;
+    transition: none; /* Pas de transition pour éviter l'effet visuel */
+}
+
+.logo-link:hover {
+    color: inherit; /* Reste la même couleur au survol */
+    text-decoration: none;
+}
+
+.nav-logo .highlight {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 var(--spacing-md);
+}
+
+.nav-item {
+    color: var(--color-text);
+    font-weight: 500;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    position: relative;
+}
+
+/* Effet d'animation sur les éléments de navigation */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: var(--color-primary);
+    transition: var(--transition-standard);
+    transform: translateX(-50%);
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+    width: 80%;
+}
+
+.nav-item.active {
+    color: var(--color-primary);
+}
+
+/* Menu burger pour mobile */
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text);
+    margin: 5px;
+    border-radius: var(--border-radius-full);
+    transition: var(--transition-standard);
+}
+
+/* ======= SECTION PRÉSENTATION ======= */
+.presentation-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-xl);
+}
+
+.presentation-text {
+    flex: 1;
+}
+
+.presentation-text h1 {
+    /* Taille responsive pour le titre principal */
+    font-size: clamp(var(--font-size-xl), 5vw, var(--font-size-xxxl));
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-primary);
+}
+
+.presentation-text h2 {
+    /* Taille responsive pour le sous-titre */
+    font-size: clamp(var(--font-size-lg), 2.5vw, var(--font-size-xl));
+    margin-bottom: var(--spacing-lg);
+    font-weight: 400;
+}
+
+.intro-text {
+    /* Taille responsive pour le texte d'intro */
+    font-size: clamp(var(--font-size-base), 1.8vw, var(--font-size-lg));
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.8;
+}
+
+.cta-group {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.presentation-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.psychologue-image-container {
+    /* Taille responsives avec min et max */
+    width: min(400px, 90%);
+    height: min(400px, 90vw);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-neomorphic);
+    transition: var(--transition-standard);
+}
+
+.psychologue-image-container:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-neomorphic-hover);
+}
+
+.psychologue-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintient les proportions de l'image */
+}
+
+/* ======= SECTION SERVICES ======= */
+.services-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.service-card {
+    flex: 1;
+    background: var(--color-card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-neomorphic);
+    transition: var(--transition-standard);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-neomorphic-hover);
+}
+
+.card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: var(--color-icon-bg);
+    border-radius: var(--border-radius-full);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+    font-size: var(--font-size-xl);
+    box-shadow: var(--shadow-subtle);
+}
+
+/* Style SVG dans les icônes */
+.card-icon svg {
+    width: 32px;
+    height: 32px;
+    fill: var(--color-primary);
+}
+
+.service-card h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+}
+
+.service-card p {
+    flex-grow: 1;
+    margin-bottom: var(--spacing-lg);
+}
+
+.card-btn {
+    align-self: flex-start;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius-full);
+    font-weight: 500;
+    transition: var(--transition-standard);
+}
+
+.card-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    transition: var(--transition-standard);
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+}
+
+/* ======= LAYOUT CONTAINERS ======= */
+.container {
+    /* Largeur de conteneur responsive avec clamp pour éviter les media queries */
+    width: clamp(300px, var(--container-width), var(--container-max-width));
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.section {
+    /* Garantit que chaque section occupe exactement 100% de la hauteur de la fenêtre */
+    height: 100vh; 
+    min-height: 100vh; /* Fallback pour les anciens navigateurs */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-xxl) 0;
+    position: relative;
+    /* Protection contre le débordement du contenu */
+    overflow: hidden;
+}
+
+.section-title {
+    /* Taille de titre responsive sans media queries */
+    font-size: clamp(var(--font-size-xl), 5vw, var(--font-size-xxl));
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--color-accent);
+    margin: var(--spacing-sm) auto 0;
+    border-radius: var(--border-radius-full);
+}
+
+.section-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl);
+    /* Taille de texte responsive */
+    font-size: clamp(var(--font-size-base), 2vw, var(--font-size-lg));
+    color: var(--color-text-light);
+}
+
+/* ======= NAVIGATION ======= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Padding responsif qui diminue sur les petits écrans */
+    padding: clamp(var(--spacing-xs), 1.5vw, var(--spacing-md)) clamp(var(--spacing-md), 3vw, var(--spacing-lg));
+    background-color: var(--color-background-translucent);
+    backdrop-filter: blur(10px); /* Effet de flou pour la transparence */
+    z-index: 1000; /* Garantit que la navbar reste au-dessus des autres éléments */
+    box-shadow: var(--shadow-subtle);
+    transition: var(--transition-standard);
+}
+
+.navbar.scrolled {
+    padding: var(--spacing-xs) var(--spacing-lg);
+    box-shadow: var(--shadow-medium);
+}
+
+.nav-logo h3 {
+    margin-bottom: 0;
+    /* Taille responsives sans media queries */
+    font-size: clamp(var(--font-size-base), 1.5vw, var(--font-size-md));
+    white-space: nowrap;
+}
+
+.nav-logo .highlight {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 var(--spacing-md);
+}
+
+.nav-item {
+    color: var(--color-text);
+    font-weight: 500;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    position: relative;
+}
+
+/* Effet d'animation sur les éléments de navigation */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background: var(--color-primary);
+    transition: var(--transition-standard);
+    transform: translateX(-50%);
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+    width: 80%;
+}
+
+.nav-item.active {
+    color: var(--color-primary);
+}
+
+/* Menu burger pour mobile */
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text);
+    margin: 5px;
+    border-radius: var(--border-radius-full);
+    transition: var(--transition-standard);
+}
+
+/* ======= SECTION PRÉSENTATION ======= */
+.presentation-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-xl);
+}
+
+.presentation-text {
+    flex: 1;
+}
+
+.presentation-text h1 {
+    /* Taille responsive pour le titre principal */
+    font-size: clamp(var(--font-size-xl), 5vw, var(--font-size-xxxl));
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-primary);
+}
+
+.presentation-text h2 {
+    /* Taille responsive pour le sous-titre */
+    font-size: clamp(var(--font-size-lg), 2.5vw, var(--font-size-xl));
+    margin-bottom: var(--spacing-lg);
+    font-weight: 400;
+}
+
+.intro-text {
+    /* Taille responsive pour le texte d'intro */
+    font-size: clamp(var(--font-size-base), 1.8vw, var(--font-size-lg));
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.8;
+}
+
+.cta-group {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.presentation-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.psychologue-image-container {
+    /* Taille responsives avec min et max */
+    width: min(400px, 90%);
+    height: min(400px, 90vw);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-neomorphic);
+    transition: var(--transition-standard);
+}
+
+.psychologue-image-container:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-neomorphic-hover);
+}
+
+.psychologue-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Maintient les proportions de l'image */
+}
+
+/* ======= SECTION SERVICES ======= */
+.services-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+}
+
+.service-card {
+    flex: 1;
+    background: var(--color-card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-neomorphic);
+    transition: var(--transition-standard);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-neomorphic-hover);
+}
+
+.card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: var(--color-icon-bg);
+    border-radius: var(--border-radius-full);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+    font-size: var(--font-size-xl);
+    box-shadow: var(--shadow-subtle);
+}
+
+/* Style SVG dans les icônes */
+.card-icon svg {
+    width: 32px;
+    height: 32px;
+    fill: var(--color-primary);
+}
+
+.service-card h3 {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-primary);
+}
+
+.service-card p {
+    flex-grow: 1;
+    margin-bottom: var(--spacing-lg);
+}
+
+.card-btn {
+    align-self: flex-start;
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius-full);
+    font-weight: 500;
+    transition: var(--transition-standard);
+}
+
+.card-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ======= SECTION CONTACT ======= */
+.contact-container {
+    display: flex;
+    gap: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
+    /* Utilisation de flex-wrap pour un meilleur responsive sans media queries */
+    flex-wrap: wrap;
+}
+
+.contact-info {
+    /* Taille responsive avec flex-basis et min-width */
+    flex: 1;
+    flex-basis: clamp(280px, 30%, 400px);
+    background: var(--color-card-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-neomorphic);
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Style SVG dans les icônes de contact */
+.contact-item svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-primary);
+    margin-right: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.contact-item p {
+    margin-bottom: 0;
+}
+
+.contact-form-container {
+    /* Taille responsive avec flex et min-width */
+    flex: 2;
+    flex-basis: clamp(280px, 60%, 800px);
+    background: var(--color-card-bg);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-neomorphic);
+}
+
+.contact-form {
+    display: grid;
+    /* Grille responsive qui s'adapte sans media queries */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+/* Champ de message qui s'étend sur toute la largeur */
+.form-group:nth-child(4) {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+    color: var(--color-text-light);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: none;
+    background: var(--color-input-bg);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-inset);
+    font-family: var(--font-primary);
+    color: var(--color-text);
+    transition: var(--transition-standard);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    box-shadow: var(--shadow-inset-focus);
+}
+
+.contact-form .btn-primary {
+    grid-column: 1 / -1;
+    justify-self: center;
+    margin-top: var(--spacing-sm);
+}
+
+/* ======= FOOTER ======= */
+footer {
+    background: var(--color-footer-bg);
+    color: var(--color-text-light);
+    padding: var(--spacing-lg) 0;
+    margin-top: var(--spacing-xxl);
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Flex-wrap pour responsive sans media queries */
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.copyright, .creator {
+    margin-bottom: 0;
+    font-size: var(--font-size-sm);
+}
+
+.creator-link {
+    color: var(--color-primary);
+    transition: var(--transition-standard);
+    text-decoration: underline;
+}
+
+.creator-link:hover {
+    color: var(--color-primary-dark);
+}
+
+.social-icons {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--border-radius-full);
+    background: var(--color-icon-bg);
+    color: var(--color-primary);
+    transition: var(--transition-standard);
+    box-shadow: var(--shadow-subtle);
+}
+
+/* Style SVG dans les icônes sociales */
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--color-primary);
+}
+
+.social-icon:hover {
+    background: var(--color-primary);
+    transform: translateY(-3px);
+}
+
+.social-icon:hover svg {
+    fill: white;
+}
+
+/* ======= RESPONSIVE DESIGN ======= */
+/* Utilisation minimale des media queries grâce aux fonctions CSS modernes */
+/* Ces media queries gèrent seulement les changements majeurs de layout */
+@media screen and (max-width: 1024px) {
+    /* Ajustement global pour les écrans moyens */
+    :root {
+        --container-width: 90%;
+    }
+    
+    /* Passage en colonne pour les cartes de services */
+    .services-cards {
+        flex-direction: column;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Menu de navigation mobile */
+    .nav-links {
+        position: absolute;
+        right: 0;
+        top: 8vh;
+        height: 92vh;
+        background: var(--color-background);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 50%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        box-shadow: var(--shadow-medium);
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .nav-links li {
+        opacity: 0;
+    }
+    
+    .burger {
+        display: block;
+    }
+    
+    .nav-active {
+        transform: translateX(0%);
+    }
+    
+    /* Présentation en colonne sur mobile */
+    .presentation-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .cta-group {
+        justify-content: center;
+    }
+    
+    /* Centrage du footer sur mobile */
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* Animation pour le toggle du burger menu */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+    opacity: 0;
+}
+
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Animation pour l'apparition des liens de la navbar */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+} .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Animation pour l'apparition des liens de la navbar */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+} .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Animation pour l'apparition des liens de la navbar */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

@@ -1,0 +1,181 @@
+/* 
+* Variables d'animations et transitions
+* Définit les comportements d'animation pour une expérience utilisateur fluide et cohérente
+* Utilise des variables pour maintenir la cohérence à travers le site
+*/
+
+:root {
+    /* ======= DURÉES DE TRANSITION ======= */
+    /* Système d'échelle progressive pour différents types d'animations */
+    --transition-fast: 150ms;      /* Pour les petites interactions (hover sur boutons) */
+    --transition-standard: 300ms;  /* Pour la plupart des transitions d'interface */
+    --transition-slow: 500ms;      /* Pour les animations plus expressives */
+    --transition-very-slow: 800ms; /* Pour les animations d'entrée/sortie majeures */
+    
+    /* ======= COURBES D'ACCÉLÉRATION ======= */
+    /* Différentes courbes pour différents types de mouvements */
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);  /* Mouvement naturel avec accélération et décélération */
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);       /* Démarrage rapide, fin douce (entrées d'éléments) */
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);        /* Démarrage lent, fin rapide (sorties d'éléments) */
+    --ease-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Effet de rebond pour plus d'expressivité */
+    --ease-elastic: cubic-bezier(0.5, 0.75, 0.25, 1.25);    /* Effet élastique pour animations ludiques */
+    
+    /* ======= TRANSITIONS PRÉDÉFINIES ======= */
+    /* Combinaisons prêtes à l'emploi de durée et courbe d'accélération */
+    --transition-standard: var(--transition-standard) var(--ease-in-out);
+    --transition-hover: var(--transition-fast) var(--ease-out);
+    --transition-page: var(--transition-slow) var(--ease-in-out);
+    --transition-bounce: var(--transition-standard) var(--ease-bounce);
+    --transition-emphasis: var(--transition-slow) var(--ease-elastic);
+    
+    /* ======= OMBRES NÉOMORPHIQUES ======= */
+    /* Système d'ombres pour créer des effets de relief en 3D subtils */
+    
+    /* Ombres subtiles pour éléments plats */
+    --shadow-subtle: 0 2px 10px rgba(180, 160, 135, 0.1);
+    --shadow-medium: 0 5px 15px rgba(180, 160, 135, 0.12);
+    
+    /* Ombres néomorphiques (effet de relief subtil) */
+    --shadow-neomorphic: 
+        8px 8px 16px rgba(195, 180, 155, 0.25),
+        -8px -8px 16px rgba(255, 250, 240, 0.6);
+    
+    /* Version plus intense pour états de survol */
+    --shadow-neomorphic-hover:
+        10px 10px 20px rgba(195, 180, 155, 0.3),
+        -10px -10px 20px rgba(255, 250, 240, 0.8);
+    
+    /* Ombres pour les éléments enfoncés (comme les inputs) */
+    --shadow-inset:
+        inset 2px 2px 5px rgba(195, 180, 155, 0.25),
+        inset -2px -2px 5px rgba(255, 250, 240, 0.7);
+    
+    /* Version mise en évidence pour les états de focus */
+    --shadow-inset-focus:
+        inset 3px 3px 7px rgba(195, 180, 155, 0.3),
+        inset -3px -3px 7px rgba(255, 250, 240, 0.8),
+        0 0 0 2px rgba(90, 154, 148, 0.2);
+        
+    /* ======= ANIMATIONS PERSONNALISÉES ======= */
+    /* Durées d'animation pour les @keyframes */
+    --duration-fade: 800ms;
+    --duration-slide: 500ms;
+    --duration-scale: 400ms;
+    --duration-bounce: 600ms;
+    
+    /* Délais d'animation pour créer des séquences */
+    --delay-instant: 0ms;
+    --delay-short: 100ms;
+    --delay-medium: 200ms;
+    --delay-long: 400ms;
+}
+
+/* ======= KEYFRAMES POUR ANIMATIONS ======= */
+
+/* Animation de fade-in pour les éléments qui apparaissent */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation de fade pour entrée par le côté */
+@keyframes fadeInSide {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Animation de pulse pour les CTA */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: var(--shadow-neomorphic);
+    }
+    50% {
+        transform: scale(1.03);
+        box-shadow: var(--shadow-neomorphic-hover);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: var(--shadow-neomorphic);
+    }
+}
+
+/* Animation de flottement pour les éléments qui doivent attirer l'attention */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Animation de rotation pour les icônes */
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animation de shake pour les formulaires d'erreur */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+/* Animation d'effet de brillance pour les cartes et boutons */
+@keyframes shine {
+    0% {
+        left: -100%;
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+/* Classes utilitaires pour appliquer facilement des animations */
+.animate-fade-in {
+    animation: fadeIn var(--duration-fade) var(--ease-out) forwards;
+}
+
+.animate-pulse {
+    animation: pulse 3s var(--ease-in-out) infinite;
+}
+
+.animate-float {
+    animation: float 4s var(--ease-in-out) infinite;
+}
+
+.animate-shake {
+    animation: shake 0.5s var(--ease-out);
+}

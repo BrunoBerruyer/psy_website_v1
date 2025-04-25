@@ -1,0 +1,11 @@
+/* 
+* Fichier central de variables CSS
+* Importe tous les autres fichiers de variables
+*/
+
+@import 'fonts.css';
+@import 'colors.css';
+@import 'layout.css';
+@import 'animations.css';
+@import 'boutons.css';
+@import 'micro_interactions.css';

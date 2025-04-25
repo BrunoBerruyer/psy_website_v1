@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <!-- Métadonnées essentielles -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odile Jacmain - Cabinet de psychologie clinique</title>
+    <meta name="description" content="Cabinet de psychologie offrant des services d'accompagnement pour enfants, adultes et couples. Approche bienveillante et personnalisée.">
+    
+    <!-- Liaison avec notre fichier CSS principal qui importe tous les modules CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation fixe - Reste visible pendant tout le défilement -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <!-- Identité du cabinet - Nom de la psychologue avec lien vers la section présentation -->
+            <h3><a href="#presentation" class="logo-link"><span class="highlight">Odile Jacmain</span> - Cabinet de psychologie clinique</a></h3>
+        </div>
+        <!-- Liste de navigation - Structure sémantique avec ul/li pour l'accessibilité -->
+        <ul class="nav-links">
+            <li><a href="#presentation" class="nav-item">Présentation</a></li>
+            <li><a href="#services" class="nav-item">Services</a></li>
+            <li><a href="#contact" class="nav-item">Contact</a></li>
+        </ul>
+        <!-- Menu hamburger pour mobile - S'active en responsive -->
+        <div class="burger" aria-label="Menu de navigation">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Présentation - Première vue pour les visiteurs -->
+    <header id="presentation" class="section">
+        <div class="container presentation-container">
+            <!-- Image de la psychologue à gauche -->
+            <div class="presentation-image">
+                <div class="psychologue-image-container">
+                    <img src="assets/images/photo_profil_02.png" alt="Odile Jacmain, Psychologue" class="psychologue-image">
+                </div>
+            </div>
+            <!-- Texte de présentation à droite -->
+            <div class="presentation-text">
+                <h1>Odile Jacmain</h1>
+                <h2>Psychologue clinicienne</h2>
+                <p class="intro-text">
+                    Bienvenue dans mon cabinet. J'accompagne adultes, adolescents et familles 
+                    dans leur cheminement vers le mieux-être. Mon approche est à la fois bienveillante, 
+                    structurée et adaptée à chaque situation unique.
+                </p>
+                <!-- Boutons d'appel à l'action (CTA) -->
+                <div class="cta-group">
+                    <a href="#contact" class="btn btn-primary">Contactez-moi</a>
+                    <a href="#contact" class="btn btn-secondary">Prendre rendez-vous</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenu principal - Contient les sections Services et Contact -->
+    <main>
+        <!-- Section 2: Services - Présentation des différentes offres -->
+        <section id="services" class="section">
+            <div class="container">
+                <h2 class="section-title">Mes services</h2>
+                <p class="section-intro">
+                    J'offre un accompagnement adapté à différents publics et problématiques. 
+                    Voici les principaux domaines dans lesquels je peux vous aider.
+                </p>
+                
+                <!-- Conteneur de cartes en Flexbox - 3 cartes de services -->
+                <div class="services-cards">
+                    <!-- Carte 1: Accompagnement jeunesse -->
+                    <article class="service-card">
+                        <!-- Icône SVG d'adolescent -->
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <!-- Icône d'adolescent (silhouette) -->
+                                <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/>
+                            </svg>
+                        </div>
+                        <h3>Accompagnement jeunesse</h3>
+                        <p>
+                            Soutien psychologique adapté aux adolescents face aux défis 
+                            de leur développement: anxiété scolaire, troubles de l'attention, 
+                            problèmes relationnels, et transition vers l'âge adulte.
+                        </p>
+                        <a href="#contact" class="card-btn">En savoir plus</a>
+                    </article>
+                    
+                    <!-- Carte 2: Thérapie de famille -->
+                    <article class="service-card">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                                <!-- Icône famille (groupe de personnes avec cœur) -->
+                                <path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM609.3 512H471.4c5.4-9.4 8.6-20.3 8.6-32v-8c0-60.7-27.1-115.2-69.8-151.8c2.4-.1 4.7-.2 7.1-.2h61.4C567.8 320 640 392.2 640 481.3c0 17-13.8 30.7-30.7 30.7zM432 256c-31 0-59-12.6-79.3-32.9C372.4 196.5 384 163.6 384 128c0-26.8-6.6-52.1-18.3-74.3C384.3 40.1 407.2 32 432 32c61.9 0 112 50.1 112 112s-50.1 112-112 112z"/>
+                            </svg>
+                        </div>
+                        <h3>Thérapie de famille</h3>
+                        <p>
+                            Accompagnement des familles dans l'amélioration de leur communication, 
+                            la résolution de conflits, la reconstruction de la confiance 
+                            et la redécouverte de leur connexion émotionnelle.
+                        </p>
+                        <a href="#contact" class="card-btn">En savoir plus</a>
+                    </article>
+                    
+                    <!-- Carte 3: Suivi individuel adulte -->
+                    <article class="service-card">
+                        <div class="card-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                                <!-- Icône d'utilisateur (similaire à fa-user) -->
+                                <path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/>
+                            </svg>
+                        </div>
+                        <h3>Suivi individuel adulte</h3>
+                        <p>
+                            Soutien personnalisé pour les adultes confrontés à l'anxiété, 
+                            la dépression, les traumatismes, les transitions de vie difficiles 
+                            ou simplement en quête de développement personnel.
+                        </p>
+                        <a href="#contact" class="card-btn">En savoir plus</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Contact - Informations et formulaire de contact -->
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Contact</h2>
+                
+                <!-- Disposition en deux colonnes en Flexbox -->
+                <div class="contact-container">
+                    <!-- Colonne gauche: Informations de contact -->
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                                <!-- Icône de marqueur de carte (similaire à fa-map-marker-alt) -->
+                                <path d="M172.268 501.67C26.97 291.031 0 269.413 0 192 0 85.961 85.961 0 192 0s192 85.961 192 192c0 77.413-26.97 99.031-172.268 309.67-9.535 13.774-29.93 13.773-39.464 0zM192 272c44.183 0 80-35.817 80-80s-35.817-80-80-80-80 35.817-80 80 35.817 80 80 80z"/>
+                            </svg>
+                            <p>1170 Watermael-Boitsfort</p>
+                        </div>
+                        <div class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <!-- Icône de téléphone (similaire à fa-phone) -->
+                                <path d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"/>
+                            </svg>
+                            <p>0486 47 24 03</p>
+                        </div>
+                        <div class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <!-- Icône d'enveloppe (similaire à fa-envelope) -->
+                                <path d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/>
+                            </svg>
+                            <p>ojacmain@gmail.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <!-- Icône d'horloge (similaire à fa-clock) -->
+                                <path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm61.8-104.4l-84.9-61.7c-3.1-2.3-4.9-5.9-4.9-9.7V116c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v141.7l66.8 48.6c5.4 3.9 6.5 11.4 2.6 16.8L334.6 349c-3.9 5.3-11.4 6.5-16.8 2.6z"/>
+                            </svg>
+                            <p>Lundi - Vendredi: 9h - 19h<br>Samedi: 9h - 12h</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Colonne droite: Formulaire de contact -->
+                    <div class="contact-form-container">
+                        <form class="contact-form">
+                            <!-- Champs de formulaire avec labels pour l'accessibilité -->
+                            <div class="form-group">
+                                <label for="name">Nom complet</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Téléphone</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <p class="copyright">© 2025 Cabinet de Psychologie Odile Jacmain. Tous droits réservés.</p>
+            <p class="creator">Site conçu par <a href="mailto:bruno_berruyer@proton.me" class="creator-link">Bruno Berruyer</a></p>
+            <!-- Icônes sociales (avec SVG inline) -->
+            <div class="social-icons">
+                <a href="#" class="social-icon" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <!-- Icône LinkedIn -->
+                        <path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                        <!-- Icône Facebook -->
+                        <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <!-- Icône Instagram -->
+                        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript pour les interactions -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+/* 
+* Variables de couleurs
+* Palette de couleurs terreuses, bleues et vertes apaisantes pour un design néomorphique
+* Basée sur une approche systématique avec couleurs primaires, secondaires et variations
+*/
+
+:root {
+    /* ======= COULEURS PRINCIPALES ======= */
+    
+    /* Couleur primaire - Vert-bleu apaisant */
+    --color-primary: #5a9a94;         /* Couleur de base pour les éléments principaux */
+    --color-primary-light: #7dafa9;   /* Version plus claire pour les survols */
+    --color-primary-dark: #457b76;    /* Version plus foncée pour les états actifs */
+    
+    /* Couleur secondaire - Ton terreux/beige */
+    --color-secondary: #d8a87d;       /* Couleur d'accent secondaire */
+    --color-secondary-light: #e6c5a5; /* Version plus claire pour les survols */
+    --color-secondary-dark: #b38b60;  /* Version plus foncée pour les états actifs */
+    
+    /* Couleur d'accent - Utilisée avec parcimonie pour les points focaux */
+    --color-accent: #f0c2bc;          /* Teinte rose très claire et douce pour les barres sous les titres */
+    
+    /* Couleur d'accent secondaire - Pour les barres sous les titres */
+    --color-accent-salmon: #f6a49c;   /* Saumon clair pour touches de couleur subtiles */
+    
+    /* ======= COULEURS DE FOND ======= */
+    
+    /* Fond principal - Beige pastel très lumineux */
+    --color-background: #faf4e8;      /* Couleur de fond principale pour tout le site */
+    
+    /* Fond alternatif - Pour créer une légère différenciation entre sections */
+    --color-background-alt: #f6efe0;  /* Légèrement plus foncé que le fond principal */
+    
+    /* Fond translucide - Pour les éléments avec effet de flou (comme la navbar) */
+    --color-background-translucent: rgba(250, 244, 232, 0.8); /* Version semi-transparente du fond */
+    
+    /* ======= COULEURS FONCTIONNELLES ======= */
+    
+    /* Couleurs de texte - Pour assurer une bonne lisibilité */
+    --color-text: #414547;            /* Texte principal - Presque noir mais adouci */
+    --color-text-light: #6e7579;      /* Texte secondaire - Plus clair pour moins d'importance */
+    --color-heading: #364245;         /* Couleur spécifique pour les titres - Plus intense */
+    
+    /* ======= COULEURS DES ÉLÉMENTS D'INTERFACE ======= */
+    
+    /* Fonds pour les différents éléments UI */
+    --color-card-bg: #fefaf2;         /* Fond des cartes - Légèrement plus clair que le fond principal */
+    --color-input-bg: #f8f0e4;        /* Fond des champs de formulaire - Légèrement plus foncé pour contraste */
+    --color-icon-bg: #fcf7eb;         /* Fond des conteneurs d'icônes - Très subtil */
+    --color-footer-bg: #f2e9d6;       /* Fond du footer - Plus foncé pour marquer la section */
+    
+    /* ======= COULEURS D'ÉTAT ======= */
+    
+    /* Couleurs de feedback - Pour indiquer des états particuliers */
+    --color-success: #6ba292;         /* Succès - vert apaisant */
+    --color-error: #d68f7d;           /* Erreur - corail doux moins agressif qu'un rouge pur */
+    --color-warning: #e6c27d;         /* Avertissement - beige doré subtil */
+    --color-info: #7d9ac1;            /* Information - bleu doux non intrusif */
+    
+    /* ======= COULEURS CALCULÉES ET DÉRIVÉES ======= */
+    
+    /* Utilisés par le système pour créer des variations contextuelles */
+    --color-overlay: rgba(0, 0, 0, 0.05);            /* Superposition légère pour effets subtils */
+    --color-shadow-light: rgba(255, 250, 245, 0.8);  /* Ombre claire pour effet néomorphique */
+    --color-shadow-dark: rgba(195, 180, 155, 0.3);   /* Ombre foncée pour effet néomorphique */
+    
+    /* Variations de transparence pour effets divers */
+    --color-primary-10: rgba(90, 154, 148, 0.1);     /* Version à 10% d'opacité de la couleur primaire */
+    --color-primary-20: rgba(90, 154, 148, 0.2);     /* Version à 20% d'opacité de la couleur primaire */
+    --color-primary-50: rgba(90, 154, 148, 0.5);     /* Version à 50% d'opacité de la couleur primaire */
+}

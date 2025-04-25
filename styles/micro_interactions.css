@@ -1,0 +1,228 @@
+/* 
+* Micro-interactions et animations spécifiques
+* Contient les animations appliquées à des éléments particuliers du site
+* Ces micro-interactions enrichissent l'expérience utilisateur avec des retours visuels subtils
+*/
+
+/* ======= 1. ANIMATIONS D'ENTRÉE POUR LES SECTIONS ======= */
+
+/* Animation d'entrée initiale pour la page d'accueil */
+header {
+    opacity: 0;
+}
+
+header.animate-in {
+    animation: headerFadeIn 1.2s forwards;
+}
+
+@keyframes headerFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ======= 2. ANIMATIONS DES CARTES DE SERVICES ======= */
+
+/* Animation d'entrée pour les cartes avec délai progressif */
+.service-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: cardFadeIn 0.6s var(--ease-out) forwards;
+}
+
+/* Délai différent pour chaque carte pour effet en cascade */
+.service-card:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.service-card:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.service-card:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes cardFadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ======= 3. MICRO-INTERACTION SUR LES ICÔNES DE SERVICES ======= */
+
+/* Animation des icônes SVG au survol des cartes */
+.card-icon svg {
+    transition: transform 0.3s var(--ease-out), fill 0.3s var(--ease-out);
+}
+
+.service-card:hover .card-icon svg {
+    transform: scale(1.2) rotate(5deg);
+    fill: var(--color-primary-dark);
+}
+
+/* ======= 4. ANIMATION SUR L'IMAGE DE LA PSYCHOLOGUE ======= */
+
+.psychologue-image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de brillance au survol */
+.psychologue-image-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    z-index: 2;
+    transition: none;
+    pointer-events: none;
+}
+
+.psychologue-image-container:hover::before {
+    animation: shine 1.5s;
+}
+
+@keyframes shine {
+    100% {
+        left: 100%;
+    }
+}
+
+/* ======= 5. ANIMATION DES ITEMS DE CONTACT AU SURVOL ======= */
+
+.contact-item {
+    transition: transform 0.3s var(--ease-out);
+}
+
+.contact-item:hover {
+    transform: translateX(10px);
+}
+
+.contact-item svg {
+    transition: transform 0.3s var(--ease-out), fill 0.3s var(--ease-out);
+}
+
+.contact-item:hover svg {
+    transform: rotate(15deg);
+    fill: var(--color-primary-dark);
+}
+
+/* ======= 6. ANIMATION DES CHAMPS DU FORMULAIRE ======= */
+
+/* Animation des placeholders lors du focus */
+.form-group input:focus::placeholder,
+.form-group textarea:focus::placeholder {
+    transform: translateY(-15px);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Effet de mise en évidence progressive au focus */
+.form-group input,
+.form-group textarea {
+    border-left: 2px solid transparent;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-left: 2px solid var(--color-primary);
+}
+
+/* ======= 7. ANIMATION DU BOUTON D'ENVOI ======= */
+
+.contact-form .btn-primary {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de vague au survol */
+.contact-form .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(255, 255, 255, 0.2) 50%,
+        transparent 100%
+    );
+    transition: left 0.7s var(--ease-in-out);
+}
+
+.contact-form .btn-primary:hover::before {
+    left: 100%;
+}
+
+/* ======= 8. ANIMATION DE LA BARRE DE NAVIGATION ======= */
+
+.navbar {
+    transition: padding 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.navbar.scrolled {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--color-background);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* La logique JavaScript pour cette animation est dans le fichier script.js */
+
+/* ======= 9. ANIMATION DES LIENS DE NAVIGATION ======= */
+
+.nav-item {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-item::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s ease, left 0.3s ease;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+.nav-item:hover::before {
+    width: 100%;
+    opacity: 1;
+}
+
+.nav-item.active::before {
+    width: 100%;
+    opacity: 1;
+}
+
+/* ======= 10. ANIMATION DES ICÔNES SOCIALES ======= */
+
+.social-icon svg {
+    transition: transform 0.3s var(--ease-out), fill 0.3s var(--ease-out);
+}
+
+.social-icon:hover svg {
+    transform: scale(1.2) rotate(5deg);
+}

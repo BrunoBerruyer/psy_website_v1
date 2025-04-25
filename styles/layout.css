@@ -1,0 +1,114 @@
+/* 
+* Variables de mise en page
+* Définit les espacements, largeurs, et rayons de bordure pour une interface cohérente
+*/
+
+:root {
+    /* Espacements - Système d'échelle progressive */
+    --spacing-xxs: 0.25rem;  /* 4px */
+    --spacing-xs: 0.5rem;    /* 8px */
+    --spacing-sm: 0.75rem;   /* 12px */
+    --spacing-md: 1rem;      /* 16px */
+    --spacing-lg: 1.5rem;    /* 24px */
+    --spacing-xl: 2rem;      /* 32px */
+    --spacing-xxl: 3rem;     /* 48px */
+    --spacing-xxxl: 4rem;    /* 64px */
+    
+    /* Largeurs de conteneur - Utilisation de clamp() pour adapter automatiquement */
+    --container-width: 90%;
+    --container-max-width: 1200px;
+    
+    /* Rayons de bordure - Système cohérent pour les coins arrondis */
+    --border-radius-xxs: 2px;
+    --border-radius-xs: 4px;
+    --border-radius-sm: 8px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 16px;
+    --border-radius-xl: 24px;
+    --border-radius-xxl: 32px;
+    --border-radius-full: 9999px;
+    
+    /* Points de rupture (breakpoints) pour le responsive - Rarement utilisés directement */
+    --breakpoint-xs: 320px;   /* Téléphones très petits */
+    --breakpoint-sm: 576px;   /* Téléphones */
+    --breakpoint-md: 768px;   /* Tablettes */
+    --breakpoint-lg: 1024px;  /* Petits ordinateurs portables */
+    --breakpoint-xl: 1200px;  /* Grands écrans */
+    --breakpoint-xxl: 1400px; /* Écrans très larges */
+    
+    /* Z-index pour gérer l'empilement des éléments */
+    --z-index-dropdown: 1000;
+    --z-index-sticky: 1020;
+    --z-index-fixed: 1030;
+    --z-index-modal-backdrop: 1040;
+    --z-index-modal: 1050;
+    --z-index-popover: 1060;
+    --z-index-tooltip: 1070;
+    
+    /* Variables pour les sections plein écran - Garantit 100vh exactement */
+    --section-min-height: 100vh;
+    --section-padding-y: clamp(var(--spacing-lg), 5vh, var(--spacing-xxl));
+    
+    /* Variables responsives utilisant calc() et clamp() */
+    --responsive-padding: clamp(var(--spacing-md), 3vw, var(--spacing-xl));
+    --responsive-margin: clamp(var(--spacing-md), 5vw, var(--spacing-xxl));
+    --responsive-gap: clamp(var(--spacing-sm), 2vw, var(--spacing-lg));
+    
+    /* Variables pour calculs responsive avancés */
+    --vw-unit: 1vw; /* Facilite les calculs avec vw */
+    --vh-unit: 1vh; /* Facilite les calculs avec vh */
+}
+
+/* Classe utilitaire pour forcer une section à exactement 100vh */
+.fullscreen-section {
+    height: 100vh; /* Hauteur exacte de la fenêtre */
+    min-height: 100vh; /* Garantit au moins 100vh même sur petits écrans */
+    max-height: 100vh; /* Empêche le dépassement sur certains navigateurs */
+    overflow: hidden; /* Évite le défilement dans la section */
+    position: relative; /* Pour le positionnement des éléments enfants */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Classes utilitaires pour les marges et paddings responsives */
+.margin-responsive {
+    margin: var(--responsive-margin);
+}
+
+.padding-responsive {
+    padding: var(--responsive-padding);
+}
+
+/* Classes utilitaires pour les conteneurs */
+.container-fluid {
+    width: 100%;
+    padding-left: var(--responsive-padding);
+    padding-right: var(--responsive-padding);
+}
+
+.container-narrow {
+    width: min(90%, 800px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Utilitaires de Grid responsive sans media queries */
+.grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--responsive-gap);
+}
+
+/* Utilitaires pour les espaces flexibles */
+.flex-spacer-sm {
+    height: clamp(var(--spacing-xs), 2vh, var(--spacing-md));
+}
+
+.flex-spacer-md {
+    height: clamp(var(--spacing-md), 4vh, var(--spacing-xl));
+}
+
+.flex-spacer-lg {
+    height: clamp(var(--spacing-lg), 8vh, var(--spacing-xxl));
+}
