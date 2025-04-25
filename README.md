@@ -1,6 +1,7 @@
 Psychology Services Website - v1
 Overview
 This is the initial version of a professional psychology services landing page. Developed as part of a web development examination, this project emphasizes clean coding practices, semantic HTML structure, and cohesive design principles. The site follows a single-page architecture with smooth section navigation.
+
 Key Features
 
 Full-screen sections with smooth scrolling navigation
