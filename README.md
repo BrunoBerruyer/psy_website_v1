@@ -69,15 +69,6 @@ Further accessibility improvements (ARIA labels, keyboard navigation)
 Additional CSS animations and transitions for improved UX
 
 
-
-Setup and Deployment
-
-Clone the repository:
-bashgit clone https://github.com/YourUsername/psy_website_v1.git
-
-Navigate to the project directory and open index.html in your browser
-No build process or dependencies required
-
 Credits
 Designed and developed by Bruno Berruyer as part of web development coursework.
 License
